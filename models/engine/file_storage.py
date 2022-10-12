@@ -26,21 +26,29 @@ class FileStorage:
 
     def all(self, cls=None):
         '''
-            Return the dictionary
+            Return objects of one type of class
         '''
-        fs_objects = {}
-        if cls:
-            if type(cls) is str and cls in classes:
-                for key, val in self.__objects.items():
-                    if cls == key.split('.')[0]:
-                        fs_objects[key] = val
-            elif cls.__name__ in classes:
-                for key, val in self.__objects.items():
-                    if cls.__name__ == key.split('.')[0]:
-                        fs_objects[key] = val
+        if cls is None:
+            return FileStorage.__objects
         else:
-            return self.__objects
-        return fs_objects
+            dict_class = {}
+            for key, obj in FileStorage.__objects.items():
+                if isinstance(obj, cls):
+                    dict_class[key] = obj
+            return dict_class
+
+        def delete(self, obj=None):
+            """
+            deletes obj
+            """
+            if obj is not None:
+                key = obj.__class__.__name__ + "." + str(obj.id)
+            if key in FileStorage.__objects:
+                """
+                do nothing
+                """
+                FileStorage.__objects.pop(key)
+                self.save()
 
     def new(self, obj):
         '''

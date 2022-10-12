@@ -24,5 +24,3 @@ class City(BaseModel, Base):
     else:
         name = ""
         state_id = ""
-Footer
-© 2022 GitHub, Inc.

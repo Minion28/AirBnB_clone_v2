@@ -3,7 +3,7 @@
 -- Create a database hbnb_test_db
 CREATE DATABASE IF NOT EXISTS hbnb_test_db;
 
--- Create a user of database and password
+-- Create a user of the database and password
 CREATE USER IF NOT EXISTS 'hbnb_test'@'localhost' IDENTIFIED BY 'hbnb_test_pwd';
 
 -- give all the user's properties to the database

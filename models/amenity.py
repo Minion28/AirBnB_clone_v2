@@ -1,25 +1,24 @@
 #!/usr/bin/python3
-'''
-    Implementation of the Amenity class
-'''
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, ForeignKey, Table
-from sqlalchemy.orm import relationship
-from os import getenv
+"""This is the amenity class"""
+from models.base_model import BaseModel
 
-storage_type = getenv("HBNB_TYPE_STORAGE")
-
-
-class Amenity(BaseModel, Base):
-    '''
-        Implementation for the Amenities.
-    '''
-    __tablename__ = 'amenities'
-    if storage_type == 'db':
-        from models.place import place_amenity
+s = "HBNB_TYPE_STORAGE"
+if s in environ.keys() and environ["HBNB_TYPE_STORAGE"] == "db":
+    class Amenity(BaseModel, Base):
+        """
+        This is the state class
+        """
+        __tablename__ = 'amenities'
         name = Column(String(128), nullable=False)
-        place_amenities = relationship("Place", secondary=place_amenity,
-                                       back_populates="amenities")
-    else:
-        name = ""
 
+        def __init__(self, **kwargs):
+            setattr(self, "id", str(uuid4()))
+            for k, v in kwargs.items():
+                setattr(self, k, v)
+else:
+    class Amenity(BaseModel):
+        """This is the class for Amenity
+        Attributes:
+            name: input name
+        """
+        name = ""

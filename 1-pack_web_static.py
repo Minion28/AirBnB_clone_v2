@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-    fabric script that generates a tzg archive from contents of web_static folder
+    fabric script that generates a tzg archive from
+    contents of web_static folder
 """
 from fabric.api import local
 from datetime import datetime

@@ -4,11 +4,11 @@
     to my web servers using deploy
 """
 
-from fabric.api import *
 from datetime import datetime
+from fabric.api import *
 import os
 
-env.hosts = ["35.196.96.41", "3.234.218.189"]
+env.hosts = ["34.229.63.78", "18.207.236.83"]
 env.user = "ubuntu"
 
 

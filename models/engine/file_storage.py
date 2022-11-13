@@ -3,19 +3,6 @@
     Define class FileStorage
 """
 import json
-import models
-from models.base_model import BaseModel
-from models.user import User
-from models.place import Place
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.review import Review
-
-
-classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
-           "Place": Place, "Review": Review, "State": State, "User": User}
-
 
 class FileStorage:
     '''
@@ -37,7 +24,7 @@ class FileStorage:
                     dict_class[key] = obj
             return dict_class
 
-        def delete(self, obj=None):
+    def delete(self, obj=None):
             """
             deletes obj
             """
@@ -74,6 +61,16 @@ class FileStorage:
         '''
             Deserializes the JSON file to __objects.
         '''
+        import models
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.place import Place
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.review import Review
+        classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
+           "Place": Place, "Review": Review, "State": State, "User": User}
         try:
             with open(FileStorage.__file_path, encoding="UTF8") as fd:
                 FileStorage.__objects = json.load(fd)

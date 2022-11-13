@@ -28,7 +28,7 @@ def display(text):
 
 
 @app.route('/python', strict_slashes=False)
-@app.route('/python/<Text>', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def pyth(Text='is cool'):
     Text = Text.replace('_', ' ')
     return 'Python {}'.format(Text)

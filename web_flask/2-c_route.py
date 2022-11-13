@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 '''
 do task 1
-/c/<text>: display “C ” followed by the value of the text variable (replace underscore _ symbols with a space )
+/c/<text>: display “C ” followed by the value of the
+ text variable (replace underscore _ symbols with a space )
 '''
 
 from flask import Flask

@@ -26,17 +26,17 @@ class FileStorage:
             return dict_class
 
     def delete(self, obj=None):
+        """
+        deletes obj
+        """
+        if obj is not None:
+            key = obj.__class__.__name__ + "." + str(obj.id)
+        if key in FileStorage.__objects:
             """
-            deletes obj
+            do nothing
             """
-            if obj is not None:
-                key = obj.__class__.__name__ + "." + str(obj.id)
-            if key in FileStorage.__objects:
-                """
-                do nothing
-                """
-                FileStorage.__objects.pop(key)
-                self.save()
+            FileStorage.__objects.pop(key)
+            self.save()
 
     def new(self, obj):
         '''
@@ -70,8 +70,15 @@ class FileStorage:
         from models.city import City
         from models.amenity import Amenity
         from models.review import Review
-        classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
-        "Place": Place, "Review": Review, "State": State, "User": User}
+        classes = {
+            "Amenity": Amenity,
+            "BaseModel": BaseModel,
+            "City": City,
+            "Place": Place,
+            "Review": Review,
+            "State": State,
+            "User": User
+            }
         try:
             with open(FileStorage.__file_path, encoding="UTF8") as fd:
                 FileStorage.__objects = json.load(fd)
